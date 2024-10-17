@@ -12,13 +12,34 @@ function StatusChecker() {
   const [selectedFile, setSelectedFile] = useState("Attendance");
   const [selectedYear, setSelectedYear] = useState("2024");
   const [selectedMonth, setSelectedMonth] = useState("January");
+  const [resetAnimationKey, setResetAnimationKey] = useState(0);
 
-  const handleFileChange = (e) => setSelectedFile(e.target.value);
-  const handleYearChange = (e) => setSelectedYear(e.target.value);
-  const handleMonthChange = (e) => setSelectedMonth(e.target.value);
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.value);
+    setResetAnimationKey((prev) => prev + 1); // Triggers animation reset
+  };
+
+  const handleYearChange = (e) => {
+    setSelectedYear(e.target.value);
+    setResetAnimationKey((prev) => prev + 1); // Triggers animation reset
+  };
+
+  const handleMonthChange = (e) => {
+    setSelectedMonth(e.target.value);
+    setResetAnimationKey((prev) => prev + 1); // Triggers animation reset
+  };
 
   const statusData =
     fileData[selectedFile]?.[selectedYear]?.[selectedMonth] || [];
+
+  const modifiedStatusData = [...statusData];
+
+  // Debugging logs to verify the contents of modifiedStatusData
+  console.log(
+    "Number of items in modifiedStatusData:",
+    modifiedStatusData.length
+  );
+  console.log("Contents of modifiedStatusData:", modifiedStatusData);
 
   return (
     <div className="status-checker-container">
@@ -66,13 +87,16 @@ function StatusChecker() {
 
       {/* Display Status Data */}
       <ul className="status-list">
-        {statusData.length > 0 ? (
-          statusData.map((status, index) => (
+        {modifiedStatusData.length > 0 ? (
+          modifiedStatusData.map((status, index) => (
             <li
-              key={index}
+              key={`${status.name}-${resetAnimationKey}-${index}`} // Ensures key changes on reset, includes index to make it unique
               className={`status-item ${
                 status.completed ? "completed" : "pending"
               }`}
+              style={{
+                animationDelay: `${index * 0.5}s`, // Delays each item by 0.5 seconds
+              }}
             >
               <span className="status-stage">{status.name}</span>
               <span className="status-icon">

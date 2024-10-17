@@ -9,13 +9,13 @@
   }
   
   .status-checker-container h2 {
-    font-size: 32px; /* Adjust size as needed */
+    font-size: 32px;
     font-weight: bold;
     background: linear-gradient(135deg, #28a745, #dc3545); /* Gradient from green to red */
-    -webkit-background-clip: text; /* Clip the background to the text */
-    -webkit-text-fill-color: transparent; /* Fill the text with the background */
-    margin-bottom: 20px; /* Space below the header */
-    text-align: center; /* Center the text */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 40px;
+    text-align: center;
     animation: textGlow 1.5s ease-in-out infinite alternate; /* Optional glowing effect */
   }
   
@@ -36,14 +36,6 @@
     flex-direction: column;
   }
   
-  .file-selector label,
-  .year-selector label,
-  .month-selector label {
-    font-size: 16px;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
   .file-selector select,
   .year-selector select,
   .month-selector select {
@@ -52,25 +44,6 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #fff;
-    appearance: none; /* Removes default arrow in some browsers */
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray" width="24px" height="24px"><path d="M7 10l5 5 5-5z"/></svg>'); /* Custom dropdown arrow */
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 15px;
-    transition: border-color 0.3s;
-  }
-  
-  .file-selector select:focus,
-  .year-selector select:focus,
-  .month-selector select:focus {
-    border-color: #007bff;
-    outline: none; /* Remove default focus outline */
-  }
-  
-  .file-selector select:hover,
-  .year-selector select:hover,
-  .month-selector select:hover {
-    border-color: #007bff; /* Change border color on hover */
   }
   
   .divider {
@@ -92,7 +65,16 @@
     border-radius: 4px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px); /* Initially moves items down */
+    animation: fadeInUp 0.5s ease forwards; /* Fade-in with upward movement */
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
   .status-item.completed {
@@ -115,28 +97,20 @@
     margin-left: 10px;
   }
   
-  .status-stage {
-    font-size: 16px;
-    color: #333;
+  /* Zoom animation for the last item */
+  .status-item.completed:last-child {
+    animation: zoomIn 1s ease forwards;
   }
   
-  @media screen and (max-width: 768px) {
-    .status-checker-container {
-      width: 90%;
-      padding: 15px;
+  @keyframes zoomIn {
+    0% {
+      transform: scale(1);
     }
-  
-    h2 {
-      font-size: 22px;
+    50% {
+      transform: scale(1.1);
     }
-  
-    .status-item {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .status-icon {
-      margin: 5px 0;
+    100% {
+      transform: scale(1);
     }
   }
   

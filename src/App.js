@@ -9,9 +9,9 @@ function StatusChecker() {
     Bill: billData,
   };
 
-  const [selectedFile, setSelectedFile] = useState("Attendance");
+  const [selectedFile, setSelectedFile] = useState("Bill");
   const [selectedYear, setSelectedYear] = useState("2024");
-  const [selectedMonth, setSelectedMonth] = useState("January");
+  const [selectedMonth, setSelectedMonth] = useState("September");
   const [resetAnimationKey, setResetAnimationKey] = useState(0);
 
   const handleFileChange = (e) => {

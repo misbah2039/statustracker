@@ -93,8 +93,8 @@ export const billData = {
       { name: "Account Section", completed: true },
       { name: "DDO Sir", completed: true },
       { name: "Treasury", completed: true },
-      { name: "Vendor", completed: false },
-      { name: "Man Power", completed: false },
+      { name: "Vendor", completed: true },
+      { name: "Man Power", completed: true },
     ],
     July: [
       { name: "ASI(M) Sir", completed: true },
@@ -109,8 +109,8 @@ export const billData = {
       { name: "Account Section", completed: true },
       { name: "DDO Sir", completed: true },
       { name: "Treasury", completed: true },
-      { name: "Vendor", completed: false },
-      { name: "Man Power", completed: false },
+      { name: "Vendor", completed: true },
+      { name: "Man Power", completed: true },
     ],
     August: [
       { name: "ASI(M) Sir", completed: true },
@@ -125,8 +125,8 @@ export const billData = {
       { name: "Account Section", completed: true },
       { name: "DDO Sir", completed: true },
       { name: "Treasury", completed: true },
-      { name: "Vendor", completed: false },
-      { name: "Man Power", completed: false },
+      { name: "Vendor", completed: true },
+      { name: "Man Power", completed: true },
     ],
     September: [
       { name: "ASI(M) Sir", completed: false },

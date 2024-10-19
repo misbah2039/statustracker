@@ -35,11 +35,15 @@ function StatusChecker() {
   const modifiedStatusData = [...statusData];
 
   // Debugging logs to verify the contents of modifiedStatusData
-  console.log(
-    "Number of items in modifiedStatusData:",
-    modifiedStatusData.length
-  );
-  console.log("Contents of modifiedStatusData:", modifiedStatusData);
+  //   console.log(
+  //     "Number of items in modifiedStatusData:",
+  //     modifiedStatusData.length
+  //   );
+  //   console.log("Contents of modifiedStatusData:", modifiedStatusData);
+  //   console.log("Modified Status Data:", modifiedStatusData);
+  //   modifiedStatusData.map((status, index) => {
+  //     console.log(status.name, status.completed);
+  //   });
 
   return (
     <div className="status-checker-container">

@@ -101,7 +101,12 @@
   .status-item.completed:last-child {
     animation: zoomIn 1s ease forwards;
   }
-  
+  .status-item:last-child {
+    opacity: 1; /* Ensures the last item is always fully visible */
+    transform: translateY(0); /* Make sure it doesn't move down */
+    animation: zoomIn 1s ease forwards; /* Optional: it can also fade in */
+}
+
   @keyframes zoomIn {
     0% {
       transform: scale(1);

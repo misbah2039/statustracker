@@ -16,7 +16,7 @@ function StatusChecker() {
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.value);
-    setResetAnimationKey((prev) => prev + 1); // Triggers animatyion reset
+    setResetAnimationKey((prev) => prev + 1); // Triggers animation reset
   };
 
   const handleYearChange = (e) => {
@@ -33,17 +33,10 @@ function StatusChecker() {
     fileData[selectedFile]?.[selectedYear]?.[selectedMonth] || [];
 
   const modifiedStatusData = [...statusData];
-
-  // Debugging logs to verify the contents of modifiedStatusData
-  //   console.log(
-  //     "Number of items in modifiedStatusData:",
-  //     modifiedStatusData.length
-  //   );
-  //   console.log("Contents of modifiedStatusData:", modifiedStatusData);
-  //   console.log("Modified Status Data:", modifiedStatusData);
-  //   modifiedStatusData.map((status, index) => {
-  //     console.log(status.name, status.completed);
-  //   });
+  let firstIncompleteFound = false; // Track the first "false" completed status
+  const hasCompletedStatus = modifiedStatusData.some(
+    (status) => status.completed
+  ); // Check if there's at least one true status
 
   return (
     <div className="status-checker-container">
@@ -92,22 +85,38 @@ function StatusChecker() {
       {/* Display Status Data */}
       <ul className="status-list">
         {modifiedStatusData.length > 0 ? (
-          modifiedStatusData.map((status, index) => (
-            <li
-              key={`${status.name}-${resetAnimationKey}-${index}`} // Ensures key changes on reset, includes index to make it unique
-              className={`status-item ${
-                status.completed ? "completed" : "pending"
-              }`}
-              style={{
-                animationDelay: `${index * 0.5}s`, // Delays each item by 0.5 seconds
-              }}
-            >
-              <span className="status-stage">{status.name}</span>
-              <span className="status-icon">
-                {status.completed ? "✓" : "✗"}
-              </span>
-            </li>
-          ))
+          modifiedStatusData.map((status, index) => {
+            // Determine if this is the first "false" completed status
+            const showReachedText =
+              !status.completed && !firstIncompleteFound && hasCompletedStatus;
+            if (showReachedText) firstIncompleteFound = true;
+
+            return (
+              <li
+                key={`${status.name}-${resetAnimationKey}-${index}`} // Ensures key changes on reset, includes index to make it unique
+                className={`status-item ${
+                  status.completed ? "completed" : "pending"
+                }`}
+                style={{
+                  animationDelay: `${index * 0.5}s`, // Delays each item by 0.5 seconds
+                }}
+              >
+                <span className="status-stage">{status.name}</span>
+                <div className="status-icon">
+                  {status.completed ? (
+                    "✓"
+                  ) : (
+                    <>
+                      {showReachedText && (
+                        <span className="reached-text">(Reached Here...)</span>
+                      )}{" "}
+                      ✗{" "}
+                    </>
+                  )}
+                </div>
+              </li>
+            );
+          })
         ) : (
           <p>No data available for the selected month and year.</p>
         )}

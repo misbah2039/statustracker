@@ -69,7 +69,10 @@
     transform: translateY(20px); /* Initially moves items down */
     animation: fadeInUp 0.5s ease forwards; /* Fade-in with upward movement */
   }
-  
+  .reached-text{
+    font-size: 1rem;
+    /* font-weight: bold; */
+  }
   @keyframes fadeInUp {
     to {
       opacity: 1;

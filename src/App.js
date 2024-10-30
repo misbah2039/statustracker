@@ -16,7 +16,7 @@ function StatusChecker() {
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.value);
-    setResetAnimationKey((prev) => prev + 1); // Triggers animation reset
+    setResetAnimationKey((prev) => prev + 1); // Triggers animatyion reset
   };
 
   const handleYearChange = (e) => {

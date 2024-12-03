@@ -101,7 +101,7 @@ export const attendanceData = {
       { name: "DG Fire Sir", completed: true },
     ],
     November: [
-      { name: "ASI(M) Sir", completed: false },
+      { name: "ASI(M) Sir", completed: true },
       { name: "SI(M) Sir", completed: false },
       { name: "F&AO Sir", completed: false },
       { name: "CFO(F/P) Sir", completed: false },

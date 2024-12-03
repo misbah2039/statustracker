@@ -156,7 +156,7 @@ export const billData = {
       { name: "ASI(M) Sir", completed: true },
       { name: "Account Section", completed: true },
       { name: "DDO Sir", completed: true },
-      { name: "Treasury", completed: false },
+      { name: "Treasury", completed: true },
       { name: "Vendor", completed: false },
       { name: "Man Power", completed: false },
     ],

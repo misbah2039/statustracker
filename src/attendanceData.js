@@ -102,12 +102,12 @@ export const attendanceData = {
     ],
     November: [
       { name: "ASI(M) Sir", completed: true },
-      { name: "SI(M) Sir", completed: false },
-      { name: "F&AO Sir", completed: false },
-      { name: "CFO(F/P) Sir", completed: false },
-      { name: "CFO(T) Sir", completed: false },
-      { name: "CFO(O) Sir", completed: false },
-      { name: "ADG Fire Sir", completed: false },
+      { name: "SI(M) Sir", completed: true },
+      { name: "F&AO Sir", completed: true },
+      { name: "CFO(F/P) Sir", completed: true },
+      { name: "CFO(T) Sir", completed: true },
+      { name: "CFO(O) Sir", completed: true },
+      { name: "ADG Fire Sir", completed: true },
       { name: "DG Fire Sir", completed: false },
     ],
     December: [

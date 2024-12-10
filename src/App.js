@@ -41,7 +41,7 @@ function StatusChecker() {
   return (
     <div className="status-checker-container">
       <h2>Status Checker</h2>
-
+      <p>last update on 09 Dec 2024</p>
       {/* File Type Selection */}
       <div className="file-selector">
         <label>Select File Type:</label>

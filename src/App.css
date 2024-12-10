@@ -8,8 +8,18 @@
     font-family: Arial, sans-serif;
   }
   
-  .status-checker-container h2 {
+  .status-checker-container h2{
     font-size: 32px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #28a745, #dc3545); /* Gradient from green to red */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+    text-align: center;
+    animation: textGlow 1.5s ease-in-out infinite alternate; /* Optional glowing effect */
+  }
+  .status-checker-container p{
+    font-size: 15px;
     font-weight: bold;
     background: linear-gradient(135deg, #28a745, #dc3545); /* Gradient from green to red */
     -webkit-background-clip: text;
@@ -18,7 +28,6 @@
     text-align: center;
     animation: textGlow 1.5s ease-in-out infinite alternate; /* Optional glowing effect */
   }
-  
   @keyframes textGlow {
     0% {
       text-shadow: 0 0 0px rgba(40, 167, 69, 0.7), 0 0 0px rgba(40, 167, 69, 0.5);

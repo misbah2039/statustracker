@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./App.css";
 import { attendanceData } from "./attendanceData";
 import { billData } from "./billData";
@@ -13,6 +14,22 @@ function StatusChecker() {
   const [selectedYear, setSelectedYear] = useState("2024");
   const [selectedMonth, setSelectedMonth] = useState("September");
   const [resetAnimationKey, setResetAnimationKey] = useState(0);
+  const [visitorCount, setVisitorCount] = useState(null); // State to hold visitor count
+
+  // Function to update the counter on the backend
+  useEffect(() => {
+    const updateVisitorCount = async () => {
+      try {
+        const response = await axios.post("http://localhost:5000/counter");
+        console.log("Visitor count response:", response.data);
+        setVisitorCount(response.data.count);
+      } catch (error) {
+        console.error("Error updating visitor count:", error);
+      }
+    };
+
+    updateVisitorCount();
+  }, []);
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.value);
@@ -41,7 +58,8 @@ function StatusChecker() {
   return (
     <div className="status-checker-container">
       <h2>Status Checker</h2>
-      <p>last update on 09 Dec 2024</p>
+      <p>Last update on 09 Dec 2024</p>
+
       {/* File Type Selection */}
       <div className="file-selector">
         <label>Select File Type:</label>
@@ -121,6 +139,11 @@ function StatusChecker() {
           <p>No data available for the selected month and year.</p>
         )}
       </ul>
+      {/* Visitor Count */}
+      <span style={{ color: "white", display: "block", textAlign: "center" }}>
+        Visitor Count:{" "}
+        {visitorCount !== null ? visitorCount : "Loading visitor count..."}
+      </span>
     </div>
   );
 }

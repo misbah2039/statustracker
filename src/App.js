@@ -12,7 +12,7 @@ function StatusChecker() {
 
   const [selectedFile, setSelectedFile] = useState("Bill");
   const [selectedYear, setSelectedYear] = useState("2024");
-  const [selectedMonth, setSelectedMonth] = useState("November");
+  const [selectedMonth, setSelectedMonth] = useState("December");
   const [resetAnimationKey, setResetAnimationKey] = useState(0);
   const [visitorCount, setVisitorCount] = useState(null); // State to hold visitor count
 
@@ -58,7 +58,7 @@ function StatusChecker() {
   return (
     <div className="status-checker-container">
       <h2>Status Checker</h2>
-      <p>Last update on 17 January 2024</p>
+      <p>Last update on 24 January 2025</p>
 
       {/* File Type Selection */}
       <div className="file-selector">
